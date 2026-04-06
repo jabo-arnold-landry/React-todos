@@ -1,8 +1,10 @@
-function Todo() {
+import type { TodoStructure } from "../assets/types";
+
+function Todo({ task }: TodoStructure) {
   return (
     <>
-      <label htmlFor="task-1">taskOne</label>
-      <input type="checkbox" name="task-checkbox" id="task-1" />
+      <label htmlFor={task}>{task}</label>
+      <input type="checkbox" name="task-checkbox" id={task} />
     </>
   );
 }
