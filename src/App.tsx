@@ -15,6 +15,7 @@ function App() {
 
   return (
     <>
+    <h1>todos</h1>
       <form action={actionToTrigger}>
         <input
           type="text"
@@ -23,22 +24,11 @@ function App() {
           placeholder="Add Todo..."
           disabled={isPending}
         />
-
         <button> +</button>
       </form>
 
       <main>
-        {todos.length !== 0 ? (
-          todos.map((task, index) => {
-            return (
-              <div key={index}>
-                <Todo {...task} />
-              </div>
-            );
-          })
-        ) : (
-          <p>No tasks</p>
-        )}
+        <Todo tasks={todos} setTodos={setTodos} />
       </main>
     </>
   );
