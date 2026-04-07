@@ -1,11 +1,25 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { TodoStructure } from "../assets/types";
+import type React from "react";
 interface PropType {
   tasks: TodoStructure[];
   setTodos: Dispatch<SetStateAction<TodoStructure[]>>;
 }
 
 function Todo({ tasks, setTodos }: PropType) {
+  
+  function deleteCompletedTodo(e: React.MouseEvent<HTMLButtonElement>) {
+    const checkedTodo = tasks.find(
+      (task) => task.task === e.currentTarget.id,
+    ) as TodoStructure;
+
+    checkedTodo.isDone = !checkedTodo.isDone;
+    const getUncheckedTodos = tasks.filter(
+      (task) => task.task !== checkedTodo.task,
+    );
+
+    setTodos([...getUncheckedTodos]);
+  }
   return (
     <>
       {tasks.length !== 0 ? (
@@ -44,11 +58,14 @@ function Todo({ tasks, setTodos }: PropType) {
                   setTodos([...getUncheckedTodos, ...getCheckedTodos]);
                 }}
               />
+              <button id={task} onClick={deleteCompletedTodo}>
+                delete
+              </button>
             </div>
           );
         })
       ) : (
-        <p className="big-one">No Tasks yet</p>
+        <p className="big-one">No Task(s) yet</p>
       )}
     </>
   );
