@@ -8,7 +8,17 @@ function App() {
 
   function addTodo(_: unknown, formData: FormData): unknown {
     const task = formData.get("task") as string;
-    if (!task) return alert("can not set empty todo please add one");
+
+    const isTaskExists = todos.find((todo) => todo.task === task);
+
+    if (!task) {
+      return alert("can not set empty todo please add one");
+    }
+
+    if (isTaskExists?.task) {
+      return alert("The task already exists please try another task");
+    }
+
     const obj = { isDone: false, task };
     setTodos((prev) => [...prev, obj]);
   }
