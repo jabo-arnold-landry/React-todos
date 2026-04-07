@@ -1,25 +1,18 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { TodoStructure } from "../assets/types";
 import type React from "react";
+import filterTodos from "../utils/CheckedTodosFiltering";
 interface PropType {
   tasks: TodoStructure[];
   setTodos: Dispatch<SetStateAction<TodoStructure[]>>;
 }
 
 function Todo({ tasks, setTodos }: PropType) {
-  
   function deleteCompletedTodo(e: React.MouseEvent<HTMLButtonElement>) {
-    const checkedTodo = tasks.find(
-      (task) => task.task === e.currentTarget.id,
-    ) as TodoStructure;
-
-    checkedTodo.isDone = !checkedTodo.isDone;
-    const getUncheckedTodos = tasks.filter(
-      (task) => task.task !== checkedTodo.task,
-    );
-
+    const { getUncheckedTodos } = filterTodos(tasks, e.currentTarget.id);
     setTodos([...getUncheckedTodos]);
   }
+
   return (
     <>
       {tasks.length !== 0 ? (
@@ -42,17 +35,9 @@ function Todo({ tasks, setTodos }: PropType) {
                 onChange={(e) => {
                   e.currentTarget.checked = !isDone;
 
-                  const checkedTodo = tasks.find(
-                    (task) => task.task === e.currentTarget.id,
-                  ) as TodoStructure;
-
-                  checkedTodo.isDone = !checkedTodo.isDone;
-                  const getUncheckedTodos = tasks.filter(
-                    (task) => task.task !== checkedTodo.task,
-                  );
-
-                  const getCheckedTodos = tasks.filter(
-                    (task) => task.task === checkedTodo.task,
+                  const { getUncheckedTodos, getCheckedTodos } = filterTodos(
+                    tasks,
+                    e.currentTarget.id,
                   );
 
                   setTodos([...getUncheckedTodos, ...getCheckedTodos]);
