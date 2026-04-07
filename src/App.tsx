@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-    <h1>todos</h1>
+      <h1 className="big-one">todos</h1>
       <form action={actionToTrigger}>
         <input
           type="text"
