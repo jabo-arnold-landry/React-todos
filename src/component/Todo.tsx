@@ -20,33 +20,37 @@ function Todo({ tasks, setTodos }: PropType) {
           const { task, isDone } = todo;
 
           return (
-            <div key={task} id="index" className="input-group">
-              <label
-                htmlFor={task}
-                className={isDone ? "text-gray-400 line-through" : "big-one"}
-              >
-                {task}
-              </label>
-              <input
-                type="checkbox"
-                name="task-checkbox"
-                id={task}
-                disabled={isDone}
-                onChange={(e) => {
-                  e.currentTarget.checked = !isDone;
+            <>
+              <section className="flex justify-between pr-16 pl-1">
+                <div key={task} id="index" className="flex items-center gap-2 pb-5">
+                  <input
+                    type="checkbox"
+                    name="task-checkbox"
+                    id={task}
+                    disabled={isDone}
+                    className="order-1 peer"
+                    onChange={(e) => {
+                      e.currentTarget.checked = !isDone;
 
-                  const { getUncheckedTodos, getCheckedTodos } = filterTodos(
-                    tasks,
-                    e.currentTarget.id,
-                  );
+                      const { getUncheckedTodos, getCheckedTodos } =
+                        filterTodos(tasks, e.currentTarget.id);
 
-                  setTodos([...getUncheckedTodos, ...getCheckedTodos]);
-                }}
-              />
-              <button id={task} onClick={deleteCompletedTodo}>
-                delete
-              </button>
-            </div>
+                      setTodos([...getUncheckedTodos, ...getCheckedTodos]);
+                    }}
+                  />
+                  <label
+                    htmlFor={task}
+                    className="order-2 text-xl first-letter:uppercase truncate line-clamp-1 text-gray-500 peer-disabled:line-through"
+                  >
+                    {task}
+                  </label>
+                </div>
+
+                <button id={task} onClick={deleteCompletedTodo}>
+                  delete
+                </button>
+              </section>
+            </>
           );
         })
       ) : (

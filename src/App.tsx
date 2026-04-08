@@ -37,7 +37,7 @@ function App() {
             id="input"
             placeholder="Add Todo..."
             disabled={isPending}
-            className="border-none w-120 py-3 px-4 rounded-4xl focus-within:shadow-sm focus-within:shadow-gray-500 outline-none shadow-md shadow-gray-400"
+            className="border-none w-130 py-3 px-4 rounded-4xl focus-within:shadow-sm focus-within:shadow-gray-500 outline-none shadow-md shadow-gray-400"
           />
           <button className="relative right-16 text-2xl font-bold text-white bg-green-500/70 text-center pb-1 px-2 rounded-full">
             {" "}
@@ -45,7 +45,7 @@ function App() {
           </button>
         </form>
 
-        <main className="">
+        <main className="grid gap-4 divide-y divide-black/50">
           <Todo tasks={todos} setTodos={setTodos} />
         </main>
       </section>
