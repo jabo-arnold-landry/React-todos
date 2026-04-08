@@ -25,21 +25,30 @@ function App() {
 
   return (
     <>
-      <h1 className="big-one">todos</h1>
-      <form action={actionToTrigger}>
-        <input
-          type="text"
-          name="task"
-          id="input"
-          placeholder="Add Todo..."
-          disabled={isPending}
-        />
-        <button> +</button>
-      </form>
+      <section className="grid place-content-center h-screen gap-4">
+        <h1 className="font-bold text-6xl tracking-[1rem] opacity-20 text-center mb-4">
+          todos
+        </h1>
 
-      <main>
-        <Todo tasks={todos} setTodos={setTodos} />
-      </main>
+        <form action={actionToTrigger} className="">
+          <input
+            type="text"
+            name="task"
+            id="input"
+            placeholder="Add Todo..."
+            disabled={isPending}
+            className="border-none w-120 py-3 px-4 rounded-4xl focus-within:shadow-sm focus-within:shadow-gray-500 outline-none shadow-md shadow-gray-400"
+          />
+          <button className="relative right-16 text-2xl font-bold text-white bg-green-500/70 text-center pb-1 px-2 rounded-full">
+            {" "}
+            +
+          </button>
+        </form>
+
+        <main className="">
+          <Todo tasks={todos} setTodos={setTodos} />
+        </main>
+      </section>
     </>
   );
 }
