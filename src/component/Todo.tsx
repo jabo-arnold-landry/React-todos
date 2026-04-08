@@ -21,8 +21,12 @@ function Todo({ tasks, setTodos }: PropType) {
 
           return (
             <>
-              <section className="flex justify-between pr-16 pl-1">
-                <div key={task} id="index" className="flex items-center gap-2 pb-5">
+              <section className="flex items-center justify-between pr-16 pl-1">
+                <div
+                  key={task}
+                  id="index"
+                  className="flex items-center gap-2 pb-5"
+                >
                   <input
                     type="checkbox"
                     name="task-checkbox"
@@ -46,8 +50,12 @@ function Todo({ tasks, setTodos }: PropType) {
                   </label>
                 </div>
 
-                <button id={task} onClick={deleteCompletedTodo}>
-                  delete
+                <button
+                  id={task}
+                  onClick={deleteCompletedTodo}
+                  className="cursor-pointer bg-red-400 text-white rounded-full px-3 py-2 transition-colors duration-300 hover:bg-red-300"
+                >
+                  🗑️
                 </button>
               </section>
             </>
