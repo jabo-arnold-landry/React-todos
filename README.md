@@ -7,16 +7,16 @@ This exercises will cover the aspect of data sharing in React by creating a user
 - React
 - TypeScript
 - Tailwind CSS for styling
-
-## Running the Project
-
-To run the project in your local machine follow the below steps
-
+  
 ## What the app will consist
 
 - Adding todo to the list
 - Tracking your todo list
 - Removing finished tasks
+
+## Running the Project
+
+To run the project in your local machine follow the below steps
 
 ```bash
 git clone https://github.com/jabo-arnold-landry/React-todos
