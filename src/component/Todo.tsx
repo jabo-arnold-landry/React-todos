@@ -44,7 +44,7 @@ function Todo({ tasks, setTodos }: PropType) {
                   />
                   <label
                     htmlFor={task}
-                    className="order-2 text-xl first-letter:uppercase truncate line-clamp-1 text-gray-500 peer-disabled:line-through"
+                    className="order-2 text-xl first-letter:uppercase truncate line-clamp-1 text-gray-500 peer-disabled:line-through max-inline-48"
                   >
                     {task}
                   </label>
