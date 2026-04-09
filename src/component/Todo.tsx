@@ -25,14 +25,14 @@ function Todo({ tasks, setTodos }: PropType) {
                 <div
                   key={task}
                   id="index"
-                  className="flex items-center gap-2 pb-5"
+                  className="flex items-center gap-2 pb-5 group"
                 >
                   <input
                     type="checkbox"
                     name="task-checkbox"
                     id={task}
                     disabled={isDone}
-                    className="order-1 peer"
+                    className="peer group-has-[.two:checked]:self-start"
                     onChange={(e) => {
                       e.currentTarget.checked = !isDone;
 
@@ -44,10 +44,15 @@ function Todo({ tasks, setTodos }: PropType) {
                   />
                   <label
                     htmlFor={task}
-                    className="order-2 text-xl first-letter:uppercase truncate line-clamp-1 text-gray-500 peer-disabled:line-through max-inline-48"
+                    className="text-xl first-letter:uppercase line-clamp-1 text-gray-500 peer-disabled:line-through max-inline-48 break-all group-has-[.two:checked]:line-clamp-none"
                   >
                     {task}
                   </label>
+                  <input
+                    type="checkbox"
+                    name="readmore"
+                    className="two appearance-none after:content-['expand'] after:underline after:cursor-pointer checked:after:content-['collapse'] checked:self-end"
+                  />
                 </div>
 
                 <button
