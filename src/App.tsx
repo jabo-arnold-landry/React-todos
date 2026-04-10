@@ -1,9 +1,10 @@
-import { useActionState, useState } from "react";
+import { useActionState } from "react";
 import Todo from "./component/Todo";
 import { type TodoStructure } from "./assets/types";
+import useLocalStorage from "./customhooks/useLocalStorage";
 
 function App() {
-  const [todos, setTodos] = useState<TodoStructure[]>([]);
+  const [todos, setTodos] = useLocalStorage<TodoStructure[]>("todos", []);
   const [_, actionToTrigger, isPending] = useActionState(addTodo, null);
 
   function addTodo(_: unknown, formData: FormData): unknown {
